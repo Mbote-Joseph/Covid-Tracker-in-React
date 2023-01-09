@@ -69,3 +69,8 @@ img{
   margin-right: auto;
   margin-left: 80%;
 }
+
+.name{
+  text-align: center;
+  margin-top: 40px;
+}

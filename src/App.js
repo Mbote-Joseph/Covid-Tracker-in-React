@@ -10,10 +10,9 @@ function App() {
   const [deathCases, setDeathCases] = useState("");
   const [recoveredCases, setRecoveredCases] = useState("");
   const [userInput, setUserInput] = useState("");
-  // const [countryInfo, setCountryInfo]= useState({});
-  // const [flag, setFlag]= useState("");
   const [image, setImage]= useState("");
-  // const [clicked, setClick] = useState(false)
+  const name= "Mbote-Joseph"
+
 
 
   useEffect(()=>{
@@ -33,8 +32,7 @@ function App() {
     todayCases,
     todayDeaths,
     todayRecovered,
-    // countryInfo,
-    // flag,
+ 
   }) => {
     setCountry(country);
     setCases(cases);
@@ -43,8 +41,7 @@ function App() {
     setTodayCases(todayCases);
     setDeathCases(todayDeaths);
     setRecoveredCases(todayRecovered);
-    // setCountryInfo(countryInfo);
-    // setFlag(flag)
+  
   };
 
 
@@ -66,11 +63,6 @@ function App() {
       });
   };
 
-  // if(country){
-  //   setClick(clicked=>{
-  //     clicked = true
-  //   })
-  // }
 
   // onClick={() => setClick((clicked) => !clicked)}
 
@@ -103,6 +95,7 @@ function App() {
   
         <p>Recovered Today : {recoveredCases}</p>
         </div>
+
         <div>
         {
           image ?
@@ -112,8 +105,9 @@ function App() {
         }
         </div>
         
-        
+      
       </div>
+      <p className="name">Created by : {name}</p>
     </div>
   );
 }
