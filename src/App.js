@@ -67,7 +67,7 @@ function App() {
   // onClick={() => setClick((clicked) => !clicked)}
 
   return (
-    <div className="covidData">
+    <div className="covidData col-12">
       <h1>COVID-19 CASES COUNTRY WISE</h1>
       <div className="covidData__input">
         <form onSubmit={handleSubmit}>
@@ -79,11 +79,11 @@ function App() {
       </div>
   
       {/* Showing the details of the country */}
-
+    <div className="row">
       {
         country ?
 
-      <div className="covidData__country__info">
+      <div className="covidData__country__info col-6 col-md-12 col-sm-12">
         <div>
         <p>Country Name : {country} </p>
         
@@ -100,7 +100,7 @@ function App() {
         <p>Recovered Today : {recoveredCases}</p>
         </div>
 
-        <div>
+        <div className="col-12 col-md-12 col-sm-12">
         {
           image ?
           <img src={image} alt="_blank"/> 
@@ -116,6 +116,7 @@ function App() {
 
       <h1 className="covidData__country__info"> Covid Statistics</h1>
       }
+      </div>
       <p className="name">Created by : {name}</p>
     </div>
   );
