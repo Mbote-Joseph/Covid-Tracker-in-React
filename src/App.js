@@ -79,6 +79,10 @@ function App() {
       </div>
   
       {/* Showing the details of the country */}
+
+      {
+        country ?
+
       <div className="covidData__country__info">
         <div>
         <p>Country Name : {country} </p>
@@ -105,8 +109,13 @@ function App() {
         }
         </div>
         
+        
       
       </div>
+      : 
+
+      <h1 className="covidData__country__info"> Covid Statistics</h1>
+      }
       <p className="name">Created by : {name}</p>
     </div>
   );
