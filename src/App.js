@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
-import './App.css'
+import { useState, useEffect } from "react";
+import React from "react";
+import "./App.css";
 
 function App() {
   const [country, setCountry] = useState("");
@@ -10,19 +11,16 @@ function App() {
   const [deathCases, setDeathCases] = useState("");
   const [recoveredCases, setRecoveredCases] = useState("");
   const [userInput, setUserInput] = useState("");
-  const [image, setImage]= useState("");
-  const name= "Mbote-Joseph"
+  const [image, setImage] = useState("");
+  const name = "Mbote-Joseph";
 
-
-
-  useEffect(()=>{
+  useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/countries")
-    .then((response)=>response.json())
-    .then((data)=>{
-      setData(data);
-    });
-  },[]);
-
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+      });
+  }, []);
 
   const setData = ({
     country,
@@ -32,7 +30,6 @@ function App() {
     todayCases,
     todayDeaths,
     todayRecovered,
- 
   }) => {
     setCountry(country);
     setCases(cases);
@@ -41,28 +38,24 @@ function App() {
     setTodayCases(todayCases);
     setDeathCases(todayDeaths);
     setRecoveredCases(todayRecovered);
-  
   };
-
 
   const handleSearch = (e) => {
     setUserInput(e.target.value);
   };
-  
+
   const handleSubmit = (props) => {
     props.preventDefault();
     fetch(`https://disease.sh/v3/covid-19/countries/${userInput}`)
       .then((res) => res.json())
       .then((data) => {
         setData(data);
-        let image= data.countryInfo.flag;
+        let image = data.countryInfo.flag;
         setImage(image);
         console.log(data);
         console.log(image);
-        
       });
   };
-
 
   // onClick={() => setClick((clicked) => !clicked)}
 
@@ -74,52 +67,41 @@ function App() {
           {/* input county name */}
           <input onChange={handleSearch} placeholder="Enter Country Name" />
           <br />
-          <button type="submit" >Search</button>
+          <button type="submit">Search</button>
         </form>
       </div>
-  
+
       {/* Showing the details of the country */}
-    <div className="row">
-      {
-        country ?
+      <div className="row">
+        {country ? (
+          <div className="covidData__country__info">
+            <div>
+              <p>Country Name : {country} </p>
 
-      <div className="covidData__country__info col-6 col-md-12 col-sm-12">
-        <div>
-        <p>Country Name : {country} </p>
-        
-        <p>Cases : {cases}</p>
-  
-        <p>Deaths : {deaths}</p>
-  
-        <p>Recovered : {recovered}</p>
-  
-        <p>Cases Today : {todayCases}</p>
-  
-        <p>Deaths Today : {deathCases}</p>
-  
-        <p>Recovered Today : {recoveredCases}</p>
-        </div>
+              <p>Cases : {cases}</p>
 
-        <div className="col-12 col-md-12 col-sm-12">
-        {
-          image ?
-          <img src={image} alt="_blank"/> 
-          :
-          " "
-        }
-        </div>
-        
-        
-      
+              <p>Deaths : {deaths}</p>
+
+              <p>Recovered : {recovered}</p>
+
+              <p>Cases Today : {todayCases}</p>
+
+              <p>Deaths Today : {deathCases}</p>
+
+              <p>Recovered Today : {recoveredCases}</p>
+            </div>
+
+            <div>{image ? <img src={image} alt="_blank" /> : " "}</div>
+          </div>
+        ) : (
+          <h1 className="covidData__country__info"> Covid Statistics </h1>
+        )}
       </div>
-      : 
-
-      <h1 className="covidData__country__info"> Covid Statistics</h1>
-      }
-      </div>
-      <p className="name">Created by : {name}</p>
+      <p className="name">
+        Created by : {name} .React Version {React.version}
+      </p>
     </div>
   );
 }
 
-export default App
+export default App;
